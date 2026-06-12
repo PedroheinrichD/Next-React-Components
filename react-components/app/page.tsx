@@ -1,13 +1,10 @@
-import GeoForm from "./components/GeoForm";
+import { Person } from "./components/person";
 
 const Page = () => {
   return (
     <>
-      <section className="bg-sky-200 text-white">
-        <h1>exportanto e importando components</h1>
-
-          <h1 className="text-black">Formas Geométricas</h1>
-          <GeoForm />
+      <section>
+        <Person />
       </section>
     </>
   );
