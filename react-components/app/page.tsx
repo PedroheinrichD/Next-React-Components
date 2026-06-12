@@ -4,7 +4,15 @@ const Page = () => {
   return (
     <>
       <section>
-        <Person />
+        <Person 
+          name="Keyson"
+          address="brasil"
+        />
+
+        <Person
+          name="Pedro"
+          address="estados unidos"
+        />
       </section>
     </>
   );

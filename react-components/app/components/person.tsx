@@ -1,27 +1,16 @@
-const getWeekDay = () => {
-  return Intl.DateTimeFormat("pt-br", { weekday: "long" }).format(new Date());
+
+
+type Props = {
+  name: string;
+  address: string
 };
 
-export const Person = () => {
-  const user = {
-    name: "João",
-    lastName: "Silva",
-    age: 29,
-    city: "São Paulo",
-  };
-
-  const name = "Pedro";
-  const avatar =
-    "https://unsplash.com/pt-br/fotografias/um-homem-com-barba-e-camisa-verde-ZgwIEWcvlKo";
+export const Person = ({name, address}: Props) => {
 
   return (
     <>
-      <h1>{name}</h1>
-      <img src={avatar} alt={name} />
-
-      <h2>{getWeekDay()}</h2>
-
-      <h2>{user.name}, tem {user.age} anos e mora na cidade {user.city}</h2>
+      <h1>Seja bem vindo {name} que mora na rua {address}</h1>
+    
     </>
   );
 };
