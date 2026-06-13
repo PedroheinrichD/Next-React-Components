@@ -1,19 +1,15 @@
-import { Person } from "./components/person";
+import { Card } from "./components/Card";
 
 const Page = () => {
   return (
     <>
       <section>
-        <Person 
-          name="Keyson"
-          address="brasil"
-          avatar="https://img.magnific.com/fotos-gratis/jovem-homem-posando-isolado-contra-a-parede-em-branco-do-estudio_273609-12356.jpg?semt=ais_hybrid&w=740&q=80"
-        />
-
-        <Person
-          name="Pedro"
-          address="estados unidos"
-        />
+        <Card>
+          <>
+            <h2 className="text-lg">Autor pedro dias</h2>
+            <h4 className="text-right">livro tal tal </h4>
+          </>
+        </Card>
       </section>
     </>
   );
