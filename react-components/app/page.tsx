@@ -1,17 +1,15 @@
-import { Card } from "./components/Card";
+import { PeopleList } from "../data/PeopleList";
 
 const Page = () => {
+
   return (
     <>
       <section className="flex flex-col gap-10">
-        <Card 
-          author="Pedro Heinrich"
-          phrase="finga até ser..."
-        />
-
-          <Card 
-          phrase="bla bla bla."
-        />
+      <ul>
+       {PeopleList.map(
+        person => <li key={person.id}> {person.name} / {person.profession}</li>
+        )}
+      </ul>
       </section>
     </>
   );
