@@ -54,3 +54,5 @@ const students = [
         grade2: 6.2
     }
 ];
+
+export default students;
