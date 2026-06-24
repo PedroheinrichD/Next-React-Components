@@ -4,12 +4,20 @@ type Props = {
 
 export function Rating({ rating }: Props) {
   const result = [];
-
+  const RatingRounded = Math.floor(rating);
+  let emoji;
+  if (RatingRounded === 1) emoji = '😭';
+  if (RatingRounded === 2) emoji = '😥';
+  if (RatingRounded === 3) emoji = '😐';
+  if (RatingRounded === 4) emoji = '😀';
+  if (RatingRounded === 5) emoji = '🥳';
+  
   for (let i = 0; i < 5; i++) {
-    if (i < rating) {
-      result.push("😊");
+    // enquanto a posição for menor do que a nota arredondada a estrela deve ser preenchida.
+    if (i < RatingRounded) {
+      result.push(emoji);
     } else {
-      result.push("😭");
+      result.push("😶");
     }
   }
 

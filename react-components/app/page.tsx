@@ -6,7 +6,7 @@ const Page = () => {
      <>
 
      <Rating 
-     rating={3}/>
+     rating={2}/>
     </>
   );
 };
