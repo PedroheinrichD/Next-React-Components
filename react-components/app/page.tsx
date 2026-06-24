@@ -1,10 +1,12 @@
-import { GetDate } from "./components/Date";
+import { Rating } from "./components/Rating";
 
 const Page = () => {
   // mostrar produtos e seus preços
   return (
-    <>
-      <GetDate />
+     <>
+
+     <Rating 
+     rating={3}/>
     </>
   );
 };
