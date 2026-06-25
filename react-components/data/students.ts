@@ -1,4 +1,7 @@
-const students = [
+import { Student } from "./Student";
+
+
+const students: Student[] = [
     {
         id: 1,
         active: true,
