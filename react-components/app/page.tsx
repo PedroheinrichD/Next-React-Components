@@ -1,11 +1,11 @@
-import { StudentTable } from "./components/StudentTable";
+import { ClickEvent } from "./components/ClickEvent";
 
 const Page = () => {
   // mostrar produtos e seus preços
   return (
-     <>
-        <StudentTable />
-    </>
+    <section className="h-screen flex justify-center items-center">
+        <ClickEvent />
+    </section>
   );
 };
 
