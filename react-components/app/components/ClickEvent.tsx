@@ -2,14 +2,17 @@
 
 export function ClickEvent() {
 
+    function avisar(msg: string) {
+        alert(msg);
+    }
    
     return (
         <section>
             <button className="border rounded-md p-2 bg-sky-800 text-white"
-             onClick={() =>{
-                alert("aa")
-             }
-             }
+             onClick={() => avisar('estou avisando o que eu quero que apareça')}
+            >Clique Aqui</button>
+            <button className="border rounded-md p-2 bg-red-800 text-white"
+             onClick={() => avisar('estou avisando outro tipo de texto para mostrar')}
             >Clique Aqui</button>
         </section>
     )
@@ -30,4 +33,17 @@ export function ClickEvent() {
             () =>{
                 alert("Apertou o botao")
             }
+
+
+    E QUANDO QUEREMOS PASSAR A MESMA FUNÇÃO SÓ QUE A MENSAGEM É DIFERENTE? 
+    1= faço a function
+     
+    function avisar(msg: string) {
+        alert(msg);
+    }
+
+    2= PASSAMOS A FUNÇÃO DENTRO DE UM ARROW FUNCTION, PARA QUE QUANDO FOR CLICADO -> EXECUTA
+    
+    onClick={() => avisar('estou avisando o que eu quero que apareça')
+    onClick={() => avisar('estou avisando outro tipo de texto para mostrar')
 */
