@@ -1,19 +1,17 @@
-"use client"
 
-export function ClickEvent() {
+// passar evento via props
+type Props = {
+    label: string
+    alertar: () => void;
+}
 
-    function avisar(msg: string) {
-        alert(msg);
-    }
+export function ClickEvent({ label, alertar }: Props) {
    
     return (
         <section>
             <button className="border rounded-md p-2 bg-sky-800 text-white"
-             onClick={() => avisar('estou avisando o que eu quero que apareça')}
-            >Clique Aqui</button>
-            <button className="border rounded-md p-2 bg-red-800 text-white"
-             onClick={() => avisar('estou avisando outro tipo de texto para mostrar')}
-            >Clique Aqui</button>
+            onClick={alertar}
+            >{label}</button>
         </section>
     )
 }

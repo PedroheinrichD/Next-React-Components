@@ -1,10 +1,18 @@
+"use client"
 import { ClickEvent } from "./components/ClickEvent";
 
 const Page = () => {
-  // mostrar produtos e seus preços
+
+  // funcao para alertar 
+    const alertPage = () => alert("passando evento via prop")
+ 
   return (
     <section className="h-screen flex justify-center items-center">
-        <ClickEvent />
+
+        <ClickEvent 
+        alertar={alertPage}
+          label="Clique aqui"
+        />
     </section>
   );
 };
