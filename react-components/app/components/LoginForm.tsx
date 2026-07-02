@@ -1,7 +1,5 @@
 "use client"
-
 import { SyntheticEvent} from "react";
-
 
 function LoginForm() {
 
@@ -12,7 +10,7 @@ function LoginForm() {
   return (
     <form
       onSubmit={handleFormSubmit}
-      className="max-w-sm  mt-10 p-8 bg-white rounded-xl shadow-md space-y-4"
+      className="mx-auto max-w-sm  mt-10 p-8 bg-white rounded-xl shadow-md space-y-4"
       >
       <h2 className="text-xl font-semibold text-gray-800">Entrar</h2>
 

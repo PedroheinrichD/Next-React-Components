@@ -3,28 +3,24 @@
 import { useState } from "react";
 
 const Page = () => {
-  //     var    mudarValor   valorInicial
-  const [showMsg, setShowMsg] = useState(false)
-
-  function handleClickButton() {
-    // pega o valor atual de showMsg e passa o oposto dele , se for false vira true se for true vira false
-    setShowMsg(!showMsg) // basicamente é um toggle
-  }
+  
+ const [valueInput, setValueInput] = useState('')
 
   return (
-    <section className="mx-auto max-w-sm mt-10 p-8 text-center bg-white rounded-xl shadow-md space-y-4">
-      <button
-        onClick={handleClickButton}
-        className="bg-sky-400 text-white p-2 rounded-md cursor-pointer"
-      >
-        {showMsg ? 'Ocultar' : 'Mostrar'}
-      </button>
-      {
-        showMsg &&
-        <div>
-          <p className="bg-red-600 text-white p-2 rounded-md">Mensagem escondida</p>
-        </div>
-      }
+    <section className="p-6">
+      <input
+          id="email"
+          name="email"
+          type="email"
+          required
+          placeholder="seu@email.com"
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+          
+          value={valueInput}
+          onChange={event => setValueInput(event.target.value)}
+        />
+
+        <p>valor do input: {valueInput}</p>
     </section>
   );
 };
