@@ -3,24 +3,22 @@
 import { useState } from "react";
 
 const Page = () => {
-  
- const [valueInput, setValueInput] = useState('')
+
+  const [count, setCount] = useState(0)
+
+  function handleButton(){
+    setCount(count + 2)
+  }
 
   return (
-    <section className="p-6">
-      <input
-          id="email"
-          name="email"
-          type="email"
-          required
-          placeholder="seu@email.com"
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-          
-          value={valueInput}
-          onChange={event => setValueInput(event.target.value)}
-        />
-
-        <p>valor do input: {valueInput}</p>
+    <section className="p-6 mx-auto text-center">
+      <p className="text-3xl">{count}</p>
+      <button
+        className="py-2 px-4 rounded bg-sky-500 text-white cursor-pointer"
+        onClick={handleButton}
+      >
+        +2
+      </button>
     </section>
   );
 };
