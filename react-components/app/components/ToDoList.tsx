@@ -33,6 +33,14 @@ export default function ToDoList() {
     setInputValue(""); // limpa campo de texto
   }
 
+/* o setList dentro dessa função atualiza o state list com o que estiver dentro dos parênteses.
+   filter() -> pra cada item do array, mantenha ele só se o item.id for diferente do id recebido como parâmetro
+*/
+  function removeTask(id: string) {
+    setList(list.filter(item => item.id !== id)); // Isso pega o list atual e devolve um array novo, contendo só os itens que passaram no teste.
+  }
+
+
   return (
     <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-2xl shadow-md">
       <h1 className="text-2xl font-semibold text-gray-800 mb-6">
@@ -66,7 +74,9 @@ export default function ToDoList() {
               <input type="checkbox" className="w-4 h-4 accent-blue-500" />
               <span>{item.label}</span>
             </div>
-            <button className="text-gray-400 hover:text-red-500 transition-colors text-xl leading-none px-2">
+            <button className="text-gray-400 hover:text-red-500 transition-colors text-xl leading-none px-2"
+              onClick={() => removeTask(item.id)}
+            >
               &times;
             </button>
           </li>
