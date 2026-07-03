@@ -33,16 +33,23 @@ export default function ToDoList() {
     setInputValue(""); // limpa campo de texto
   }
 
-/* o setList dentro dessa função atualiza o state list com o que estiver dentro dos parênteses.
-   filter() -> pra cada item do array, mantenha ele só se o item.id for diferente do id recebido como parâmetro
-*/
+  /* o setList dentro dessa função atualiza o state list com o que estiver dentro dos parênteses.
+     filter() -> pra cada item do array, mantenha ele só se o item.id for diferente do id recebido como parâmetro
+  */
   function removeTask(id: string) {
     setList(list.filter(item => item.id !== id)); // Isso pega o list atual e devolve um array novo, contendo só os itens que passaram no teste.
   }
 
+  // verificação para cada item obj, caso o id bater com o checkbox clicado, ele inverte o boolean 
+  function toggleCheckbox(id: string) {
+    setList(list.map((item) => item.id === id ? { ...item, checkbox: !item.checkbox } : item))
+  }
+
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-2xl shadow-md">
+    <form className="max-w-md mx-auto mt-10 p-6 bg-white rounded-2xl shadow-md"
+      onSubmit={e => e.preventDefault()}
+    >
       <h1 className="text-2xl font-semibold text-gray-800 mb-6">
         Minha Lista de Tarefas
       </h1>
@@ -71,10 +78,16 @@ export default function ToDoList() {
             className="flex items-center justify-between bg-gray-50 border border-gray-200 rounded-lg px-4 py-3"
           >
             <div className="flex items-center gap-3">
-              <input type="checkbox" className="w-4 h-4 accent-blue-500" />
-              <span>{item.label}</span>
+              <input type="checkbox" className="w-4 h-4 accent-blue-500"
+                checked={item.checkbox}
+                onChange={() => toggleCheckbox(item.id)}
+              />
+              <span
+                className={item.checkbox ? `line-through text-gray-500` : ``}
+              >{item.label}</span>
             </div>
             <button className="text-gray-400 hover:text-red-500 transition-colors text-xl leading-none px-2"
+              type="button"
               onClick={() => removeTask(item.id)}
             >
               &times;
@@ -82,7 +95,7 @@ export default function ToDoList() {
           </li>
         ))}
       </ul>
-    </div>
+    </form>
   );
 }
 
