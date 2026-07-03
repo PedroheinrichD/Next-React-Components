@@ -17,25 +17,20 @@ export default function ToDoList() {
     },
   ]);
 
-  // valor do input está sendo guardado dentro do state newTask
-  const [newTask, setNewTask] = useState("");
+  // valor do input está sendo guardado dentro do state inputValue
+  const [inputValue, setInputValue] = useState("");
 
   function addTask() {
-    if (newTask != "") { // verificação para que o campo de texto nao seja vazio
+    if (inputValue != "") { // verificação para que o campo de texto nao seja vazio
       setList([
-        ...list,
-        {
-          label: newTask,
-          checkbox: false,
-          id: crypto.randomUUID(),
-        },
+        ...list, { label: inputValue, checkbox: false, id: crypto.randomUUID(), },
       ]);
-      setNewTask(""); // limpa campo de texto
+      setInputValue(""); // limpa campo de texto
     } else {
       alert("CAMPO VAZIO");
     }
 
-    setNewTask(""); // limpa campo de texto
+    setInputValue(""); // limpa campo de texto
   }
 
   return (
@@ -49,8 +44,8 @@ export default function ToDoList() {
           type="text"
           placeholder="Adicionar nova tarefa..."
           className="flex-1 border border-gray-300 rounded-lg px-4 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
-          value={newTask}
-          onChange={(e) => setNewTask(e.target.value)}
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
         />
         <button
           className="flex items-center justify-center bg-blue-500 hover:bg-blue-600 text-white rounded-lg px-4 py-2 transition-colors font-medium"
@@ -80,3 +75,19 @@ export default function ToDoList() {
     </div>
   );
 }
+
+
+/*--porque criar um novo array?
+
+- No React, quando você atualiza o estado de um componente, é importante 
+criar um novo array (ou objeto) em vez de modificar o estado existente
+diretamente. Isso ocorre porque o React depende da imutabilidade para 
+detectar mudanças no estado e decidir quando re-renderizar o componente.
+
+- Quando você cria um novo array, o React percebe que houve uma mudança no estado
+ e re-renderiza o componente, garantindo que a interface do usuário seja 
+ atualizada corretamente. Se você modificar o estado existente diretamente 
+ (por exemplo, usando métodos como push ou splice), o React pode não detectar 
+ a mudança e não atualizar a interface do usuário como esperado.
+*/
+
