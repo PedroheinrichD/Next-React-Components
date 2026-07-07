@@ -1,3 +1,4 @@
+import { Question } from "@/types/Question";
 import { useState } from "react";
 
 type AlternativeProps = {
