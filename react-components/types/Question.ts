@@ -4,3 +4,9 @@ export type Question = {
   alternativas: [string, string, string, string];
   respostaCorreta: string;
 };
+
+export type UsuarioResposta = {
+  pergunta: string;
+  resposta: string | null;
+  respostaCorreta: string
+}
