@@ -1,14 +1,20 @@
+import { Question } from "@/types/Question";
 import { useState } from "react";
 
 type AlternativeProps = {
   question: Question;
+  proximaPergunta: () => void;
 };
 
-export function Alternative({ question }: AlternativeProps) {
+export function Alternative({ question, proximaPergunta }: AlternativeProps) {
   const [Altselecionada, setAltSelecionada] = useState<string | null>(null);
 
   function isCorret(alternativa: string) {
     setAltSelecionada(alternativa);
+
+    setTimeout(() => {
+      proximaPergunta();
+    }, 1000);
   }
 
   return (
