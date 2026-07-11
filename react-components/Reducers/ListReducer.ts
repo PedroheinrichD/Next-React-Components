@@ -1,4 +1,5 @@
 import { ListItems } from "@/types/ListItems";
+import { filterAndSortList } from "next/dist/build/utils";
 
 /*
     dois parametro do reducer obrigatorios 
@@ -17,40 +18,72 @@ import { ListItems } from "@/types/ListItems";
 */
 
 type AddAction = {
-    type: 'add';
-    payload: {
-        text: string
-    }
-}
+  type: "add";
+  payload: {
+    text: string;
+  };
+};
 
 type EditTextAction = {
-    type: 'editText';
-    payload: {
-        id: string;
-        newText: string;
-    }
-}
+  type: "editText";
+  payload: {
+    id: string;
+    newText: string;
+  };
+};
 
 type ToggleDoneAction = {
-    type: 'togleDone';
-    payload: {
-        done: boolean
-    }
-}
+  type: "togleDone";
+  payload: {
+    id: string;
+    done: boolean;
+  };
+};
 
 type RemoveAction = {
-    type: 'RemoveAcion';
-    payload: string;
-}
+  type: "RemoveAcion";
+  payload: {
+    id: string;
+  }
+};
 // depois de tipar as ações separadas, junte elas em uma só, para mandar na função
 
 // minha lista de ações vai ser adiconar OU editarTexto OU trocarDone OU remover
 type ListActions = AddAction | EditTextAction | ToggleDoneAction | RemoveAction;
 export function ListReducer(List: ListItems[], action: ListActions) {
-   
+  
+// executando as ações
+switch (action.type) {
+    case "add":
+      return [
+        ...List,
+        {
+          id: crypto.randomUUID(),
+          text: action.payload.text,
+          done: false,
+        },
+      ];
 
+    case "editText":
+      return List.map((item) => {
+        if (item.id === action.payload.id) {
+          item.text = action.payload.newText;
+        }
+        return item
+      });
 
+    case "togleDone":
+      return List.map((item) => {
+        if (item.id === action.payload.id) {
+          item.done = !item.done
+        }
+        return item
+      });
 
-    // no final retornar a lista atualizada
-    return List;
+    case "RemoveAcion":
+        return List.filter((item) => item.id === action.payload.id)
+
+    default:
+      return List;
+  }
 }
