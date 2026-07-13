@@ -1,5 +1,4 @@
 import { ListItems } from "@/types/ListItems";
-import { filterAndSortList } from "next/dist/build/utils";
 
 /*
     dois parametro do reducer obrigatorios 
@@ -75,13 +74,13 @@ switch (action.type) {
     case "togleDone":
       return List.map((item) => {
         if (item.id === action.payload.id) {
-          item.done = !item.done
+          return {...item, done: !item.done}
         }
         return item
       });
 
     case "RemoveAcion":
-        return List.filter((item) => item.id === action.payload.id)
+        return List.filter((item) => item.id !== action.payload.id)
 
     default:
       return List;
