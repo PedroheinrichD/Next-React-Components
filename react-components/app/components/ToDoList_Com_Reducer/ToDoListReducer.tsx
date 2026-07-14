@@ -17,6 +17,7 @@ export default function TodoModal() {
   }
 
   function removeTaskItem(id: string) {
+    if (!window.confirm('Tem certeza?')) return false 
     dispatch({
       type: "RemoveAcion",
       payload: {
