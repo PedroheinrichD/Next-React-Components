@@ -1,11 +1,16 @@
 "use client";
-import TodoModal from "./components/ToDoList_Com_Reducer/ToDoListReducer";
+import { useState } from "react";
+import { CountContext } from "./Context/CountContext";
+import { Header } from "./HEADER/Header";
 
 const Page = () => {
+  const [onlineCount, setOnlineCount] = useState(99)
  
   return (
-    <section className="">
-      <TodoModal />
+    <section className="container mx-auto">
+      <CountContext.Provider value={{ onlineCount, setOnlineCount }}>
+         <Header />
+      </CountContext.Provider>
     </section>
   );
 };
