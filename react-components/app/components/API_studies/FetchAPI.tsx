@@ -3,34 +3,41 @@ import { User } from "@/types/User";
 import { useEffect, useState } from "react";
 
 export function FetchAPI() {
-
-    const [user, setUser] = useState<User[]>([])
+  const [user, setUser] = useState<User[]>([])
+  const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
+    let cancelled = false;
+
     async function fetchUser() {
       try {
         const req = await fetch("https://jsonplaceholder.typicode.com/users");
         const res = await req.json();
-        setUser(res)
-
+        if (!cancelled) setUser(res); 
       } catch (error) {
-        console.log(error);
+        if (!cancelled) setError("Erro ao buscar usuários"); 
+      } finally {
+        if (!cancelled) setIsLoading(false); 
       }
     }
-    fetchUser()
+
+    fetchUser();
+    return () => { cancelled = true }; // limpeza caso o componente fechar 
   }, []);
+
+  if (isLoading) return <p>Carregando...</p>;
+  if (error) return <p className="text-red-500">{error}</p>;
+  if (user.length === 0) return <p>Sem usuários para exibir</p>;
 
   return (
     <>
       <h1 className="text-2xl font-bold">Lista de usuários</h1>
       <ul>
         {user.map((item) => (
-            <li 
-            key={item.id}
-            className="ml-4"
-            >
-                - {item.name} <strong>endereço:</strong> {item.address.street}
-            </li>
+          <li key={item.id} className="ml-4">
+            - {item.name} <strong>endereço:</strong> {item.address.street}
+          </li>
         ))}
       </ul>
     </>
