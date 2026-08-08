@@ -16,7 +16,7 @@ export function FetchAPI() {
         const res = await req.json();
         if (!cancelled) setUser(res); 
       } catch (error) {
-        if (!cancelled) setError("Erro ao buscar usuários"); 
+        if (!cancelled) setError("Erro ao buscar usuários" ); 
       } finally {
         if (!cancelled) setIsLoading(false); 
       }
@@ -26,7 +26,7 @@ export function FetchAPI() {
     return () => { cancelled = true }; // limpeza caso o componente fechar 
   }, []);
 
-  if (isLoading) return <p>Carregando...</p>;
+  if (isLoading) return <p>Carregando...</p>; 
   if (error) return <p className="text-red-500">{error}</p>;
   if (user.length === 0) return <p>Sem usuários para exibir</p>;
 
@@ -43,3 +43,20 @@ export function FetchAPI() {
     </>
   );
 }
+
+
+/*
+  Método POST
+  - criar função async 
+  - fazer requisição e esperar a resposta
+  - segundo parametro do fetch é um objeto que definimos valores
+  - dentro do segundo parametro dizer os seguintes valores:
+    -- method: '' 
+    -- headers: {
+      'Content-type': 'application/json'
+    } 
+    -- body: JSON.stringify({
+      title: 'título do meu post do blog'
+      body: 'conteudo de texto do blog'
+    })
+*/
