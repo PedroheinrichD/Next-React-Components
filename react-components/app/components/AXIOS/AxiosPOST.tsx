@@ -1,9 +1,9 @@
-import axios from "axios"
+import { api } from "@/utils/api"
 
 export function AxiosPOST() {
     // exemplo de uso do axios para fazer uma requisição GET
     async function handlePOSTRequest() {
-        const res = await axios.post('https://jsonplaceholder.typicode.com/posts', {
+        const res = await api.post("/posts", {
             title: 'Meu novo post',
             body: 'Conteúdo do meu novo post',
             userId: 1
