@@ -1,11 +1,11 @@
 "use client";
 
-import { FetchPostImage } from "./components/API_studies/FetchPostImage";
+import { AxiosExample } from "./components/AXIOS/axiosExample";
 
 const Page = () => {
   return (
     <section className="container mx-auto">
-      <FetchPostImage/>
+      <AxiosExample/>
     </section>
   );
 };
