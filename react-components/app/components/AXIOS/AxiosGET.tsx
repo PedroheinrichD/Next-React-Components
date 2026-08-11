@@ -1,9 +1,9 @@
 import axios from "axios"
 
-export function AxiosExample() {
+export function AxiosGET() {
     // exemplo de uso do axios para fazer uma requisição GET
     async function handleGetRequest() {
-        const res = await axios.get('https://jsonplaceholder.typicode.com/posts',{
+        const res = await axios.get('https://jsonplaceholder.typicode.com/posts', {
             params: {
                 userId: 1
             }
@@ -13,11 +13,13 @@ export function AxiosExample() {
     // se não quiser usar params, pode fazer a requisição com a url normal, parametros nao sao obrigatorios, mas podem ser uteis dependendo do caso
 
     return (
-        <div>
+        <div className="flex flex-col items-center justify-center gap-4">
             <h1>Exemplo de uso do Axios</h1>
-            <button 
-            onClick={handleGetRequest}
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            
+             {/*GET*/}
+            <button
+                onClick={handleGetRequest}
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
             >
                 Fazer requisição GET
             </button>
