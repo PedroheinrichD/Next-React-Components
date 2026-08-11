@@ -11,7 +11,7 @@ export function AxiosFilePost() {
             const data = new FormData() // caixa de itens
             data.append('file', file)
 
-            const res = await api.post('/posts', {data})
+            const res = await api.post('/posts', data)
             console.log(res);
             
             
